@@ -1,5 +1,7 @@
-all: parser lexer
-	CC lexer.c parser.c
+all: calc
+
+calc: parser lexer
+	CC lexer.c parser.c -o calc
 
 lexer:
 	flex -o lexer.c lexer.l
