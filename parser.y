@@ -9,7 +9,8 @@ extern int yyerror(char *s);
 
 
 %token NUMBER
-%token ADD SUB MUL DIV ABS
+%token ADD SUB MUL DIV 
+%token ABS NEGATE
 %token EOL
 
 %%
@@ -30,6 +31,7 @@ factor: term
 
 term: NUMBER 
   | ABS term { $$ = $2 >= 0 ? $2 : - $2; }
+  | NEGATE term { $$ = $2 * -1; }
   ;
 
 %%

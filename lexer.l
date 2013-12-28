@@ -11,6 +11,7 @@
 "*"     { return MUL; }
 "/"     { return DIV; }
 "|"     { return ABS; }
+"!"     { return NEGATE; }
 -?[0-9]+  { yylval = atof(yytext); return NUMBER;  }
 \n      { return EOL; }
 [ \t]   { /* ignore */ }
