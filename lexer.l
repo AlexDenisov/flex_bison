@@ -1,21 +1,20 @@
 %{
+#include "parser.h"
 %}
 
 %option noyywrap
 
 %%
 
-"+"     { printf("PLUS\n"); }
-"-"     { printf("MINUS\n"); }
-"*"     { printf("TIMES\n"); }
-"/"     { printf("DIVIDE\n"); }
-"|"     { printf("ABS\n"); }
-[0-9]+  { printf("NUMBER %s\n", yytext); }
-\n      { printf("NEWLINE\n"); }
-[ \t]   { /*ignore*/ }
-.       { printf("UNKNOWN CHAR %s\n", yytext); }
-
-"q"     { exit(0); }
+"+"     { return ADD; }
+"-"     { return SUB; }
+"*"     { return MUL; }
+"/"     { return DIV; }
+"|"     { return ABS; }
+[0-9]+  { yylval = atof(yytext); return NUMBER;  }
+\n      { return EOL; }
+[ \t]   { /* ignore */ }
+.       { /* ignore */ }
 
 %%
 

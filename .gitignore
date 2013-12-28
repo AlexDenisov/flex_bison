@@ -1,1 +1,4 @@
 a.out
+lexer.c
+parser.c
+parser.h
