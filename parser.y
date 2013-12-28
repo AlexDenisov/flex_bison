@@ -7,11 +7,11 @@ extern int yyerror(char *s);
 
 %}
 
-
 %token NUMBER
 %token ADD SUB MUL DIV 
 %token ABS NEGATE
 %token EOL
+%token OP CP
 
 %%
 
@@ -32,6 +32,7 @@ factor: term
 term: NUMBER 
   | ABS term { $$ = $2 >= 0 ? $2 : - $2; }
   | NEGATE term { $$ = $2 * -1; }
+  | OP exp CP { $$ = $2; }
   ;
 
 %%
