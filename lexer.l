@@ -3,6 +3,7 @@
 %}
 
 %option noyywrap
+%option nodefault
 
 %%
 
@@ -14,7 +15,7 @@
 "!"     { return NEGATE; }
 "("     { return OP; }
 ")"     { return CP; }
--?[0-9]+  { yylval = atof(yytext); return NUMBER;  }
+[-+]?[0-9]+  { yylval = atof(yytext); return NUMBER;  }
 \n      { return EOL; }
 [ \t]   { /* ignore */ }
 .       { /* ignore */ }
