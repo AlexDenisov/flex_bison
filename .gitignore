@@ -2,5 +2,4 @@ a.out
 lexer.c
 parser.c
 parser.h
-calc
 *.DS_Store
